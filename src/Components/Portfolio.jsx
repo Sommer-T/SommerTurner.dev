@@ -31,28 +31,28 @@ const imageAltText = "desktop with books and laptop";
  */
 const projectList = [
   {
-    title: "10 Things To Know About Azure Static Web Apps 🎉",
+    title: "Personal Portfolio Website",
     description:
-      "Collaboration to create a beginner friendly article to help explain Azure Static Web Apps and tooling to get started.",
-    url: "https://dev.to/azure/10-things-to-know-about-azure-static-web-apps-3n4i",
+      "A responsive React-based portfolio website showcasing my projects and skills. Built with modern web technologies and deployed with CI/CD.",
+    url: "https://github.com/Sommer-T/SommerTurner.dev",
   },
   {
-    title: "Web Development for Beginners",
+    title: "Full-Stack Web Application",
     description:
-      "Contributed sketch note imagery to accompany each lesson. These help provide visual representation of what is being taught.",
-    url: "https://github.com/microsoft/web-dev-for-beginners",
+      "A complete web application with user authentication, database integration, and real-time features. Built with React, Node.js, and MongoDB.",
+    url: "#",
   },
   {
-    title: "My Resume Site",
+    title: "API Development Project",
     description:
-      "Created from Microsoft's resume workshop and deployed to GitHub pages. Includes my experience and design abilities.",
-    url: "https://github.com/microsoft/workshop-library/tree/main/full/build-resume-website",
+      "RESTful API with comprehensive documentation, testing, and deployment automation. Implemented using modern Node.js practices and cloud services.",
+    url: "#",
   },
   {
-    title: "GitHub Codespaces and github.dev",
+    title: "Open Source Contributions",
     description:
-      "Video interview to explain when to use GitHub.dev versus GitHub Codespaces, and how best to use each tool.",
-    url: "https://www.youtube.com/watch?v=c3hHhRME_XI",
+      "Active contributor to various open source projects, focusing on web development tools and libraries that benefit the developer community.",
+    url: "https://github.com/Sommer-T",
   },
 ];
 
