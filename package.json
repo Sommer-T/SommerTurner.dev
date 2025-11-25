@@ -1,9 +1,9 @@
 {
-  "name": "educator-js-codespace-template",
+  "name": "sommer-turner-portfolio",
   "version": "1.0.0",
-  "description": "Educator JS Codespace Template",
+  "description": "Sommer Turner's Personal Portfolio Website",
   "source": "src/index.html",
-  "homepage": "https://github.com/microsoft/codespaces-teaching-template-js#readme",
+  "homepage": "https://sommer-t.github.io/SommerTurner.dev",
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/codespaces-teaching-template-js.git"
+    "url": "git+https://github.com/Sommer-T/SommerTurner.dev.git"
   },
-  "author": "Microsoft",
+  "author": "Sommer Turner",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/microsoft/codespaces-teaching-template-js/issues"
+    "url": "https://github.com/Sommer-T/SommerTurner.dev/issues"
   },
   "dependencies": {
     "react": "^18.2.0",
