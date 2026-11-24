@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sommer Turner, Backend Software Engineer, Builder, CS Student. Python, Flask, REST APIs, SQLite." />
+  <title>Ellentia · Sommer Turner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117; --bg-card: #161b22; --bg-hover: #1c2128;
+      --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+      --accent: #a371f7; --accent-dim: #6e40c9; --green: #3fb950;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.7; font-size: 16px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-name { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+    #hero { padding: 7rem 0 5rem; }
+    .hero-eyebrow { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .hero-name { font-size: clamp(2.5rem,6vw,4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero-title { font-size: 1.2rem; color: var(--muted); font-weight: 400; margin-bottom: 2rem; }
+    .hero-title strong { color: var(--text); font-weight: 600; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); font-style: italic; border-left: 3px solid var(--accent); padding-left: 1rem; margin-bottom: 2.5rem; max-width: 520px; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.4rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-dim); border-color: var(--accent-dim); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--bg-hover); border-color: var(--muted); text-decoration: none; }
+    .section-label { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+    .about-body p { color: #c9d1d9; margin-bottom: 1.25rem; max-width: 680px; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body strong { color: var(--text); }
+    .stack-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .tag { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); padding: 0.35rem 0.85rem; border-radius: 20px; font-family: var(--mono); font-size: 0.8rem; transition: border-color 0.2s, color 0.2s; }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(380px,1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem; }
+    .project-name { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .project-badge { font-size: 0.7rem; font-family: var(--mono); padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(163,113,247,0.15); color: var(--accent); border: 1px solid rgba(163,113,247,0.3); white-space: nowrap; }
+    .project-desc { color: var(--muted); font-size: 0.9rem; flex: 1; margin-bottom: 1.25rem; }
+    .project-footer { display: flex; align-items: center; justify-content: space-between; }
+    .project-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .project-tag { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); background: rgba(139,148,158,0.1); padding: 0.15rem 0.5rem; border-radius: 3px; }
+    .project-link { font-size: 0.8rem; color: var(--accent); display: flex; align-items: center; gap: 0.2rem; }
+    .goals-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .goal-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .goal-icon { width: 36px; height: 36px; background: rgba(163,113,247,0.1); border: 1px solid rgba(163,113,247,0.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .goal-text strong { display: block; font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .goal-text span { color: var(--muted); font-size: 0.875rem; }
+    .connect-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .connect-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; transition: border-color 0.2s, transform 0.2s; min-width: 180px; color: var(--text); }
+    .connect-card:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; color: var(--text); }
+    .connect-card-icon { font-size: 1.3rem; }
+    .connect-card-text strong { display: block; font-size: 0.9rem; }
+    .connect-card-text span { font-size: 0.78rem; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); margin-top: 2rem; font-family: var(--mono); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--muted); font-size: 0.8rem; font-family: var(--mono); }
+    @media (max-width: 640px) { nav { padding: 0 1.25rem; } .nav-links { gap: 1.25rem; } .container { padding: 0 1.25rem; } section { padding: 3.5rem 0; } #hero { padding: 5rem 0 3.5rem; } .projects-grid { grid-template-columns: 1fr; } .connect-card { min-width: unset; flex: 1; } }
+      .case-back { display: inline-block; margin-bottom: 2rem; font-family: var(--mono); font-size: 0.85rem; }
+    .case-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.25rem 0 0; }
+    .case h2 { font-size: 1.25rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .case p { color: #c9d1d9; margin-bottom: 1rem; max-width: 700px; }
+    .case ul { color: #c9d1d9; margin: 0 0 1rem 1.25rem; max-width: 700px; }
+    .case li { margin-bottom: 0.4rem; }
+    .case strong { color: var(--text); }
+    .principle { font-size: 1.15rem; color: var(--text); border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+    .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+    .stat b { display: block; font-size: 1.5rem; color: var(--accent); font-family: var(--mono); }
+    .stat span { font-size: 0.8rem; color: var(--muted); }
+    .note { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; color: var(--muted); font-size: 0.9rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <nav><a class="nav-name" href="index.html">sommer-t</a><ul class="nav-links"><li><a href="index.html#work">Work</a></li><li><a href="resume/Sommer_Turner_Resume.pdf" target="_blank">Resume</a></li><li><a href="index.html#connect">Connect</a></li></ul></nav>
+  <section><div class="container case"><a class="case-back" href="index.html#work">← Back to work</a>
+<p class="section-label">case study</p><h1 class="hero-name">Ellentia</h1>
+<p class="hero-title">A local-first, human-governed AI orchestration and knowledge system.</p>
+<div class="case-meta"><span class="tag">Python 3.12</span><span class="tag">Ollama</span><span class="tag">Qdrant</span><span class="tag">SQLite</span><span class="tag">Pytest</span><span class="tag">JSON schemas</span></div>
+<p class="principle">Models reason. The application orchestrates. The human retains authority.</p>
+<h2>The problem</h2>
+<p>Many AI apps let the model decide what to do and then do it. That blurs the line between a suggestion and a permission, makes tool execution risky, and leaves answers without traceable sources. Ellentia puts the Python application in charge of routing, validation, permissions, execution, and logging.</p>
+<h2>Architecture</h2>
+<ul>
+<li><strong>Orchestration lifecycle:</strong> intent classification, context construction, model selection metadata, state management, and full request logging. Unsupported actions fail closed.</li>
+<li><strong>Structured response contract</strong> (<code>ellentia.response.v1</code>): every action request is validated against schemas, registered tools, argument rules, and permission policy before anything runs.</li>
+<li><strong>Central tool and model registries</strong> with read-only vs. approval-gated permissions and least-privilege defaults.</li>
+<li><strong>Governed memory:</strong> permanent memory requires explicit approval.</li>
+<li><strong>Retrieval-augmented generation</strong> with approved-source ingestion, Qdrant vector search, SQLite metadata, and source provenance on every chunk.</li>
+</ul>
+<h2>Retrieval-backed journal briefing</h2>
+<p>The <code>/journal-brief</code> workflow retrieves only relevant approved sources and returns a summary with citations, keeping <strong>evidence, inference, and suggestions</strong> separate. When nothing clears the 0.55 similarity threshold, it returns an explicit insufficient-evidence result instead of guessing.</p>
+<h2>Evaluation (November 2026 checkpoint)</h2>
+<div class="stats"><div class="stat"><b>134</b><span>automated tests passing</span></div><div class="stat"><b>5/5</b><span>live retrieval evaluations</span></div><div class="stat"><b>7/7</b><span>adversarial retrieval evaluations</span></div><div class="stat"><b>0</b><span>critical failures</span></div></div>
+<h2>A decision I'm proud of</h2>
+<p>I designed Ellentia for a council of specialist models. Two candidates, Granite 4.1 3B and Gemma 4 E4B, failed their routing evaluations. Instead of lowering the bar to ship the feature, I paused multi-model routing and kept the stable single-model architecture and its rollback baseline.</p>
+<h2>Current status</h2>
+<p>Active development. Verified: orchestration, validation, permissions, logging, and the bounded retrieval workflow with abstention. Still outstanding: online Qdrant verification against the live corpus. Multi-model routing and autonomous writes stay off until they pass evaluation.</p>
+<div class="note">Ellentia is my private assistant, so its source code isn't public. I'm glad to walk through its architecture, evaluation suites, and tradeoffs in an interview.</div></div></section>
+  <footer><div class="container"><p>built by sommer turner · sommerturner.dev</p></div></footer>
+</body>
+</html>
