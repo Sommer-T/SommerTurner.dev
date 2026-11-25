@@ -108,12 +108,15 @@
 </ul>
 <h2>Retrieval-backed journal briefing</h2>
 <p>The <code>/journal-brief</code> workflow retrieves only relevant approved sources and returns a summary with citations, keeping <strong>evidence, inference, and suggestions</strong> separate. When nothing clears the 0.55 similarity threshold, it returns an explicit insufficient-evidence result instead of guessing.</p>
-<h2>Evaluation (November 2026 checkpoint)</h2>
-<div class="stats"><div class="stat"><b>134</b><span>automated tests passing</span></div><div class="stat"><b>5/5</b><span>live retrieval evaluations</span></div><div class="stat"><b>7/7</b><span>adversarial retrieval evaluations</span></div><div class="stat"><b>0</b><span>critical failures</span></div></div>
+<h2>Evaluation (late November 2026)</h2>
+<div class="stats"><div class="stat"><b>176</b><span>automated tests passing on Python 3.9 and 3.12</span></div><div class="stat"><b>5/5</b><span>live Qdrant retrieval evaluations</span></div><div class="stat"><b>7/7</b><span>adversarial retrieval evaluations</span></div><div class="stat"><b>0</b><span>critical failures</span></div></div>
 <h2>A decision I'm proud of</h2>
 <p>I designed Ellentia for a council of specialist models. Two candidates, Granite 4.1 3B and Gemma 4 E4B, failed their routing evaluations. Instead of lowering the bar to ship the feature, I paused multi-model routing and kept the stable single-model architecture and its rollback baseline.</p>
+<h2>Security hardening</h2>
+<p>I audited my own system and found two gaps. The shell "read-only" allowlist checked only a command's first word, so flags like <code>find -delete</code> or <code>sed -i</code> could slip past validation. And the web app's chat route accepted writes from any website. I fixed both: every argument is now validated before the approval card appears and again right before execution, paths must stay inside the project, dangerous flags are refused, and commands time out after 30 seconds. The web app now rejects cross-site and non-local requests, which also closes a DNS-rebinding path.</p>
+<p>A pre-push guard keeps private history from ever reaching GitHub, and personal data lives in a separate private vault, migrated with hash verification and a rollback plan.</p>
 <h2>Current status</h2>
-<p>Active development. Verified: orchestration, validation, permissions, logging, and the bounded retrieval workflow with abstention. Still outstanding: online Qdrant verification against the live corpus. Multi-model routing and autonomous writes stay off until they pass evaluation.</p>
+<p>Active development. Verified: orchestration, validation, permissions, logging, and live Qdrant retrieval against both a bounded corpus and the full journal, with 100% citation fidelity and chunk-for-chunk parity with the local fallback. When Qdrant is stopped, the system falls back cleanly to the same answers. Multi-model routing and autonomous writes stay off until they pass evaluation.</p>
 <div class="note">Ellentia is my private assistant, so its source code isn't public. I'm glad to walk through its architecture, evaluation suites, and tradeoffs in an interview.</div></div></section>
   <footer><div class="container"><p>built by sommer turner · sommerturner.dev</p></div></footer>
 </body>
